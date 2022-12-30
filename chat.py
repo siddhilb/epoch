@@ -1,9 +1,9 @@
 import openai
+from tkinter import ttk
+from ttkthemes import ThemedTk
 import os
 import random
-import tkinter as tk
-from tkinter import *
-root = tk.Tk()
+root = ThemedTk(theme="yaru")
 root.geometry("700x700")
 key ="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"
 openai.api_key = key
@@ -15,12 +15,12 @@ def make_excuse():
     choices=response["choices"]
     choices_dict=choices[0]
     return choices_dict["text"]
-excuse = tk.Label(font=('Arial',30),text="",wraplength=400,justify=CENTER)
+excuse = ttk.Label(text="",wraplength=400,justify="center")
 
 def command():
     excuse.config(text=make_excuse())
     excuse.pack()
-generate = tk.Button(text="Generate random excuse",font=('Arial',20),command=command)
-generate.place(anchor=S,relx=0.5,rely=0.8)
+generate = ttk.Button(text="Generate random excuse",command=command)
+generate.place(anchor="center",relx=0.5,rely=0.8)
 
 root.mainloop()
